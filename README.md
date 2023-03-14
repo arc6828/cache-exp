@@ -61,6 +61,10 @@ class Medium extends Model
 - use default with no config
 
 ### Memcached
+- link
+https://phpcodez.com/install-memcached-xampp-windows-10/
+
+- .env
 ```php
 'memcached' => [
     'servers' => [
