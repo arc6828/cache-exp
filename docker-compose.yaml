@@ -1,0 +1,16 @@
+# docker pull memcached
+# docker pull redis
+#docker-compose.yml
+version: "3"
+services:
+  redis:
+    image: "redis:6.2.10-alpine"    
+    container_name: redis
+    ports:
+      - "6379:6379"
+  memcached:
+    image: "memcached:1.6.19-alpine"      
+    container_name: memcached 
+    ports:
+      - "11211:11211"
+    
