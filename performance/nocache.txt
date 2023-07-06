@@ -1,9 +1,8 @@
 Running 5s test @ http://DESKTOP-N6LMV26.local/cache-exp/public/api/cache/none
   1 threads and 1 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     0.00us    0.00us   0.00us    -nan%
-    Req/Sec     0.00      0.00     0.00    100.00%
-  1 requests in 5.02s, 223.04KB read
-  Socket errors: connect 0, read 0, write 0, timeout 1
-Requests/sec:      0.20
-Transfer/sec:     44.46KB
+    Latency     1.22s   565.32ms   1.68s    66.67%
+    Req/Sec     0.33      0.58     1.00     66.67%
+  3 requests in 5.01s, 512.02KB read
+Requests/sec:      0.60
+Transfer/sec:    102.12KB
