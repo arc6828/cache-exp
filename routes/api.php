@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Medium;
+use App\Models\Payload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,28 +19,35 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('cache/none',function(){
-    $data = Medium::fetch2("samkhok","","");
+
+Route::get('cache/none/{size}',function($size){
+    // $data = Medium::fetch2("samkhok","","");
+    $data = Payload::fetch2($size);
     return json_encode($data, JSON_UNESCAPED_UNICODE);
-});  
+});
+  
 Route::prefix('cache')->group(function () {
-    Route::get('file',function(){
-        $data = Medium::fetch("samkhok","","file");
+    Route::get('file/{size}',function($size){
+        // $data = Medium::fetch("samkhok","","file");
+        $data = Payload::fetch($size,"file");
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     });
 
-    Route::get('memcached',function(){
-        $data = Medium::fetch("samkhok","","memcached");
+    Route::get('memcached/{size}',function($size){
+        // $data = Medium::fetch("samkhok","","memcached");
+        $data = Payload::fetch($size,"memcached");
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     });
 
-    Route::get('mysql',function(){
-        $data = Medium::fetch("samkhok","","database");
+    Route::get('mysql/{size}',function($size){
+        // $data = Medium::fetch("samkhok","","database");
+        $data = Payload::fetch($size,"database");
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     });
 
-    Route::get('redis',function(){
-        $data = Medium::fetch("samkhok","","redis");
+    Route::get('redis/{size}',function($size){
+        // $data = Medium::fetch("samkhok","","redis");
+        $data = Payload::fetch($size,"redis");
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     });
 });
