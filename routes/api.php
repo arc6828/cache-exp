@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('cache/none',function(){
+    $data = Medium::fetch2("samkhok","","");
+    return json_encode($data, JSON_UNESCAPED_UNICODE);
+});  
 Route::prefix('cache')->group(function () {
     Route::get('file',function(){
         $data = Medium::fetch("samkhok","","file");
@@ -29,7 +33,7 @@ Route::prefix('cache')->group(function () {
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     });
 
-    Route::get('database',function(){
+    Route::get('mysql',function(){
         $data = Medium::fetch("samkhok","","database");
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     });
@@ -39,3 +43,4 @@ Route::prefix('cache')->group(function () {
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     });
 });
+
