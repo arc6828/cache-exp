@@ -1,0 +1,8 @@
+Running 10s test @ http://DESKTOP-N6LMV26.local/cache-exp/public/api/cache/file/2000KB
+  1 threads and 1 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   119.50ms    8.80ms 175.37ms   86.75%
+    Req/Sec     8.96      2.06    10.00     79.52%
+  83 requests in 10.01s, 158.11MB read
+Requests/sec:      8.29
+Transfer/sec:     15.80MB

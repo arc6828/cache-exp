@@ -1,0 +1,8 @@
+Running 10s test @ http://DESKTOP-N6LMV26.local/cache-exp/public/api/cache/mysql/20KB
+  1 threads and 1 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   126.99ms   54.14ms 508.12ms   96.47%
+    Req/Sec     9.07      2.10    10.00     82.93%
+  82 requests in 10.01s, 1.55MB read
+Requests/sec:      8.19
+Transfer/sec:    158.63KB
