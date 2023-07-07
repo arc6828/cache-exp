@@ -14,11 +14,13 @@ class Payload extends Model
     public static function fetch($size, $driver = "file")
     {
         // $url = "https://news.google.com/news/rss";
-        $url = url("/payload/dataset-{$size}.json");
+        // $url = url("/payload/dataset-{$size}.json");
+        $url = url("https://raw.githubusercontent.com/arc6828/cache-exp/main/public/payload/dataset-{$size}.json");
 
         $data = Cache::store($driver)->remember($url, now()->addDay(), function () use ($url) {
             //FETCH DATA
             $fileContents = file_get_contents($url);
+            // return $fileContents;
             $data = json_decode($fileContents);
             return $data;
         });
@@ -29,9 +31,11 @@ class Payload extends Model
     public static function fetch2($size)
     {
         // $url = "https://news.google.com/news/rss";
-        $url = url("/payload/dataset-{$size}.json");
+        // $url = url("/payload/dataset-{$size}.json");        
+        $url = url("https://raw.githubusercontent.com/arc6828/cache-exp/main/public/payload/dataset-{$size}.json");
 
         $fileContents = file_get_contents($url);
+        // return $fileContents;
         $data = json_decode($fileContents);
         return $data;
     }

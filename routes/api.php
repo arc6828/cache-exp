@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('cache/none/{size}',function($size){
     // $data = Medium::fetch2("samkhok","","");
     $data = Payload::fetch2($size);
+    // return $data;
     return json_encode($data, JSON_UNESCAPED_UNICODE);
 });
   
@@ -30,24 +31,28 @@ Route::prefix('cache')->group(function () {
     Route::get('file/{size}',function($size){
         // $data = Medium::fetch("samkhok","","file");
         $data = Payload::fetch($size,"file");
+        // return $data;
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     });
 
     Route::get('memcached/{size}',function($size){
         // $data = Medium::fetch("samkhok","","memcached");
         $data = Payload::fetch($size,"memcached");
+        // return $data;
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     });
 
     Route::get('mysql/{size}',function($size){
         // $data = Medium::fetch("samkhok","","database");
         $data = Payload::fetch($size,"database");
+        // return $data;
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     });
 
     Route::get('redis/{size}',function($size){
         // $data = Medium::fetch("samkhok","","redis");
         $data = Payload::fetch($size,"redis");
+        // return $data;
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     });
 });
