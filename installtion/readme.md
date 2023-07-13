@@ -5,6 +5,11 @@
 https://marketplace.digitalocean.com/apps/lemp 
 
 ## Dependency List
+- update
+```bash
+sudo apt update
+```
+
 - wrk
 ```bash
 sudo apt install wrk
@@ -12,7 +17,7 @@ sudo apt install wrk
 
 - composer
 ```bash
-sudo apt -y install php-cli unzip php-curl
+sudo apt install php-cli unzip php-curl
 cd ~
 curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 HASH=`curl -sS https://composer.github.io/installer.sig`
@@ -79,20 +84,20 @@ php artisan migrate
 
 ## Start Server
 ```bash
-cd ~/cache-exp
-php artisan serve
-service mysql restart
-service redis-server restart
+# cd ~/cache-exp
+# php artisan serve
+# service mysql restart
+# service redis-server restart
 
-nohup php artisan serve &
-ps -ef | grep "$PWD/server.php"
-kill 24482
+# nohup php artisan serve &
+# ps -ef | grep "$PWD/server.php"
+# kill 24482
 
 ```
 
 ## RUN Test
 ```bash
-cd ~/cache-exp
+cd /var/www/cache-exp
 bash run-ubuntu/run-traffic.sh
 bash run-ubuntu/run-payload.sh
 bash run-ubuntu/run-cache-size.sh
