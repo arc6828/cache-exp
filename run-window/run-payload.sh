@@ -1,6 +1,7 @@
 #!/bin/bash
 # for i in 10 30 60; do
-wget http://$(hostname).local/cache-exp/public/api/cache/flush/all
+content=$(wget http://$(hostname).local/cache-exp/public/api/cache/flush/all -q -O -)
+echo "flush all cache drivers"
 for i in 60; do
     for size in 20 200 2000; do
         echo "${i}s / ${size}KB"
