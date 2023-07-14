@@ -1,0 +1,8 @@
+Running 1m test @ http://localhost:8000/api/cache/redis/200KB
+  2 threads and 16 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   175.44ms   23.78ms 355.77ms   79.60%
+    Req/Sec    45.64     12.43    80.00     57.19%
+  5466 requests in 1.00m, 1.02GB read
+Requests/sec:     91.03
+Transfer/sec:     17.36MB
