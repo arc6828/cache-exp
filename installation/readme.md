@@ -1,8 +1,10 @@
-# Installation
+# Installation Guide
 
 ## Infrastructure
-- Use droplet market place LEMP 4GB of memory / 2vCPU
-https://marketplace.digitalocean.com/apps/lemp 
+- Use DO droplet in market place : LEMP 
+	- 4GB of memory
+	- 2vCPU
+	- https://marketplace.digitalocean.com/apps/lemp 
 
 ## Dependency List
 ```bash
