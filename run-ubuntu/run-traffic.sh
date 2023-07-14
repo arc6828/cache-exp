@@ -2,6 +2,12 @@
 # for i in 10 30 60; do
 content=$(wget http://localhost:8000/api/cache/flush/all -q -O -)
 echo "flush all cache drivers"
+
+service nginx restart
+service mysql restart
+service redis restart
+echo "restart servers"
+
 for i in 60; do
     for size in 20 2000; do
         echo "warming up : ${size}KB"
