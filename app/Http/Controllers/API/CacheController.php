@@ -40,4 +40,11 @@ class CacheController extends Controller
         return $data;
         // return json_encode($data, JSON_UNESCAPED_UNICODE);
     }
+    public function json($size, $id = "")
+    {
+        // $data = Medium::fetch("samkhok","","redis");
+        $data = Payload::fetch3($size, "redis", $id);
+        return $data;
+        // return json_encode($data, JSON_UNESCAPED_UNICODE);
+    }
 }

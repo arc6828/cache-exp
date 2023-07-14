@@ -29,4 +29,5 @@ Route::prefix('cache')->group(function () {
     Route::get('file/{size}/{id?}', [CacheController::class, "file"]);
     Route::get('mysql/{size}/{id?}', [CacheController::class, "mysql"]);
     Route::get('redis/{size}/{id?}', [CacheController::class, "redis"]);
+    Route::get('json/{size}/{id?}', [CacheController::class, "json"]);
 });
