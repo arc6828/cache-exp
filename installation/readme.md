@@ -5,80 +5,54 @@
 https://marketplace.digitalocean.com/apps/lemp 
 
 ## Dependency List
-- update
 ```bash
+
+# update
 sudo apt update
-```
 
-- wrk
-```bash
-sudo apt install wrk
-```
-
-- composer
-```bash
-sudo apt install php-cli unzip php-curl
+# composer
+sudo apt install -y php-cli unzip php-curl
 cd ~
 curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
-HASH=`curl -sS https://composer.github.io/installer.sig`
+HASH=$(curl -sS https://composer.github.io/installer.sig)
 php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
-```
-- for redis server
-```bash
-sudo apt update
-sudo apt -y install redis-server
-# sudo systemctl restart redis.service
-# sudo systemctl status redis
-```
+# redis
+sudo apt install -y redis-server
 
-- for mysql database server
-```bash
+# Database
+mysql -e "CREATE DATABASE cacheDB;"
+mysql -e "CREATE USER cacheuser@localhost IDENTIFIED BY '123456789';"
+mysql -e "GRANT ALL PRIVILEGES ON cacheDB.* TO 'cacheuser'@'localhost';"
+mysql -e "FLUSH PRIVILEGES;"
 
-
-# If /root/.my.cnf exists then it won't ask for root password
-if [ -f /root/.my.cnf ]; then
-	# echo "Enter database name!"
-	# read dbname
-    
-	# echo "Creating new MySQL database..."
-	# mysql -e "CREATE DATABASE ${dbname} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
-	mysql -e "CREATE DATABASE cacheDB;"
-    # mysql -e "SET GLOBAL max_allowed_packet=3M;"
-	# echo "Database successfully created!"
-	
-	# echo "Enter database user!"
-	# read username
-    
-	# echo "Enter the PASSWORD for database user!"
-	# echo "Note: password will be hidden when typing"
-	# read -s userpass
-    
-	# echo "Creating new user..."
-	mysql -e "CREATE USER cacheuser@localhost IDENTIFIED BY '123456789';"
-	# echo "User successfully created!"
-
-	# echo "Granting ALL privileges on ${dbname} to ${username}!"
-	mysql -e "GRANT ALL PRIVILEGES ON cacheDB.* TO 'cacheuser'@'localhost';"
-	mysql -e "FLUSH PRIVILEGES;"
-	# echo "You're good now :)"
-	# exit
-	
-```
-- for project code
-
-```bash
-sudo apt update
+# PHP Extension
 php --version
-sudo apt install php8.2-mysql
-sudo apt install php-mbstring php-xml php-bcmath
-cd ~
-git clone  https://github.com/arc6828/cache-exp
-cd cache-exp
+sudo apt install -y php8.2-mysql php-mbstring php-xml php-bcmath
+
+# wrk
+sudo apt install -y wrk
+	
+```
+## Deployment
+
+```bash
+cd /var/www/cache-exp
 composer install
 cp .env.example .env
 php artisan key:generate
+sudo chown -R www-data.www-data storage
+
+# nginx
+cd /var/www/cache-exp
+cp installation/cache-exp.nginx /etc/nginx/sites-available/cache-exp
+sudo ln -s /etc/nginx/sites-available/cache-exp /etc/nginx/sites-enabled/cache-exp
+sudo nginx -t
+sudo service nginx restart
+
+# migrate
+cd /var/www/cache-exp
 php artisan migrate
 ```
 
@@ -94,6 +68,21 @@ php artisan migrate
 # kill 24482
 
 ```
+
+## Quick Installation
+```bash
+cd /var/www
+git clone  https://github.com/arc6828/cache-exp
+cd cache-exp
+bash installation/setup-dependency.sh
+bash deploy.sh
+# curl http://localhost:8000/api/cache/file/20KB
+# curl http://localhost:8000/api/cache/mysql/20KB
+# curl http://localhost:8000/api/cache/redis/20KB
+# curl http://localhost:8000/api/cache/none/20KB
+```
+
+
 
 ## RUN Test
 ```bash

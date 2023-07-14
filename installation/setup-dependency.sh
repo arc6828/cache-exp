@@ -22,8 +22,7 @@ mysql -e "FLUSH PRIVILEGES;"
 
 # PHP Extension
 php --version
-sudo apt install -y php8.2-mysql
-sudo apt install -y php-mbstring php-xml php-bcmath
+sudo apt install -y php8.2-mysql php-mbstring php-xml php-bcmath
 
 # wrk
 sudo apt install -y wrk
