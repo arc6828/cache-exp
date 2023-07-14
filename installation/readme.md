@@ -31,7 +31,7 @@ mysql -e "FLUSH PRIVILEGES;"
 
 # PHP Extension
 php --version
-sudo apt install -y php8.2-mysql php-mbstring php-xml php-bcmath
+sudo apt install -y php8.2-fpm php8.2-mysql php-mbstring php-xml php-bcmath
 
 # wrk
 sudo apt install -y wrk
@@ -58,6 +58,12 @@ cd /var/www/cache-exp
 php artisan migrate
 ```
 
+## ERROR
+- 502 Bad Gateway
+```bash
+tail -f /var/log/nginx/error.log
+```
+
 ## Start Server
 ```bash
 # cd ~/cache-exp
@@ -77,7 +83,7 @@ cd /var/www
 git clone  https://github.com/arc6828/cache-exp
 cd cache-exp
 bash installation/setup-dependency.sh
-bash deploy.sh
+bash installation/deploy.sh
 ```
 
 ## Test API

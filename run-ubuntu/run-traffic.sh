@@ -13,13 +13,13 @@ for i in 60; do
         for t in 2; do
             for c in 2 4 8 16 32 64 128; do
                 echo "${i}s / ${size}KB / ${c} users / ${t} threads"
-                wrk -t${t} -c${c} -d${i}s "http://localhost:8000/api/cache/file/${size}KB" >performance/traffic/file-${i}s-${c}users.txt
+                wrk -t${t} -c${c} -d${i}s "http://localhost:8000/api/cache/file/${size}KB" > /var/www/cache-exp/performance/traffic/file-${i}s-${c}users.txt
                 echo "1. run file successfully"
-                wrk -t${t} -c${c} -d${i}s "http://localhost:8000/api/cache/mysql/${size}KB" >performance/traffic/mysql-${i}s-${c}users.txt
+                wrk -t${t} -c${c} -d${i}s "http://localhost:8000/api/cache/mysql/${size}KB" > /var/www/cache-exp/performance/traffic/mysql-${i}s-${c}users.txt
                 echo "2. run mysql successfully"
-                wrk -t${t} -c${c} -d${i}s "http://localhost:8000/api/cache/redis/${size}KB" >performance/traffic/redis-${i}s-${c}users.txt
+                wrk -t${t} -c${c} -d${i}s "http://localhost:8000/api/cache/redis/${size}KB" > /var/www/cache-exp/performance/traffic/redis-${i}s-${c}users.txt
                 echo "3. run redis successfully"
-                wrk -t${t} -c${c} -d${i}s "http://localhost:8000/api/cache/none/${size}KB" >performance/traffic/nocache-${i}s-${c}users.txt
+                wrk -t${t} -c${c} -d${i}s "http://localhost:8000/api/cache/none/${size}KB" > /var/www/cache-exp/performance/traffic/nocache-${i}s-${c}users.txt
                 echo "4. run nocache successfully"
             done
         done
