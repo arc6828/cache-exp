@@ -5,7 +5,7 @@ content=$(wget http://localhost:8000/api/cache/flush/all -q -O -)
 echo "flush all cache drivers"
 # measure state
 for i in 60; do
-    for size in 200; do
+    for size in 20; do
         for cache_size in 10 100 1000; do
             echo "warming up : ${cache_size}"
             for ((c = 1; c <= cache_size; c++)); do
