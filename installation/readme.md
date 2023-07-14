@@ -76,15 +76,17 @@ git clone  https://github.com/arc6828/cache-exp
 cd cache-exp
 bash installation/setup-dependency.sh
 bash deploy.sh
-# curl http://localhost:8000/api/cache/file/20KB
-# curl http://localhost:8000/api/cache/mysql/20KB
-# curl http://localhost:8000/api/cache/redis/20KB
-# curl http://localhost:8000/api/cache/none/20KB
 ```
 
+## Test API
+```bash
+curl http://localhost:8000/api/cache/file/20KB
+curl http://localhost:8000/api/cache/mysql/20KB
+curl http://localhost:8000/api/cache/redis/20KB
+curl http://localhost:8000/api/cache/none/20KB
+```
 
-
-## RUN Test
+## Run Experiment
 ```bash
 cd /var/www/cache-exp
 bash run-ubuntu/run-traffic.sh
