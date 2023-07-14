@@ -1,0 +1,8 @@
+Running 1m test @ http://localhost:8000/api/cache/mysql/2000KB
+  1 threads and 1 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    32.97ms    4.56ms  46.85ms   75.49%
+    Req/Sec    30.32      5.52    40.00     69.33%
+  1820 requests in 1.00m, 3.39GB read
+Requests/sec:     30.31
+Transfer/sec:     57.80MB
