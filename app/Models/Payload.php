@@ -20,9 +20,9 @@ class Payload extends Model
         $data = Cache::store($driver)->remember($url, now()->addDay(), function () use ($url) {
             //FETCH DATA
             $fileContents = file_get_contents($url);
-            // return $fileContents;
-            $data = json_decode($fileContents);
-            return $data;
+            return $fileContents;
+            // $data = json_decode($fileContents);
+            // return $data;
         });
 
         return $data;
@@ -35,8 +35,8 @@ class Payload extends Model
         $url = url("https://raw.githubusercontent.com/arc6828/cache-exp/main/public/payload/dataset-{$size}.json?id={$id}");
 
         $fileContents = file_get_contents($url);
-        // return $fileContents;
-        $data = json_decode($fileContents);
-        return $data;
+        return $fileContents;
+        // $data = json_decode($fileContents);
+        // return $data;
     }
 }

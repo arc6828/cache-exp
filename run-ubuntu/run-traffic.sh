@@ -9,7 +9,7 @@ service redis restart
 echo "restart servers"
 
 for i in 60; do
-    for size in 20 2000; do
+    for size in 20 200 2000; do
         echo "warming up : ${size}KB"
         content=$(wget http://localhost:8000/api/cache/file/${size}KB -q -O -)
         content=$(wget http://localhost:8000/api/cache/mysql/${size}KB -q -O -)
