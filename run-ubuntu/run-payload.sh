@@ -26,13 +26,16 @@ for d in 60; do
         echo "${d}s / ${size}KB"
         wrk -t1 -c1 -d${d}s "http://localhost:8000/api/cache/file/${size}KB" > /var/www/cache-exp/performance/payload/file-${d}s-${size}KB.txt
         echo "1. run file successfully"
+        sleep 10
         wrk -t1 -c1 -d${d}s "http://localhost:8000/api/cache/mysql/${size}KB" > /var/www/cache-exp/performance/payload/mysql-${d}s-${size}KB.txt
         echo "2. run mysql successfully"
+        sleep 10
         wrk -t1 -c1 -d${d}s "http://localhost:8000/api/cache/redis/${size}KB" > /var/www/cache-exp/performance/payload/redis-${d}s-${size}KB.txt
         echo "3. run redis successfully"
         wrk -t1 -c1 -d${d}s "http://localhost:8000/api/cache/none/${size}KB" > /var/www/cache-exp/performance/payload/nocache-${d}s-${size}KB.txt
         echo "4. run nocache successfully"
-        wrk -t1 -c1 -d${d}s "http://localhost:8000/api/cache/json/${size}KB" > /var/www/cache-exp/performance/payload/json-${d}s-${size}KB.txt
-        echo "5. run JSON successfully"
+        sleep 10
+        # wrk -t1 -c1 -d${d}s "http://localhost:8000/api/cache/json/${size}KB" > /var/www/cache-exp/performance/payload/json-${d}s-${size}KB.txt
+        # echo "5. run JSON successfully"
     done
 done
