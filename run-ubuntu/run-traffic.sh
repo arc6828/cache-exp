@@ -3,10 +3,14 @@
 content=$(wget http://localhost:8000/api/cache/flush/all -q -O -)
 echo "flush all cache drivers"
 
+sleep 10
+
 service nginx restart
 service mysql restart
 service redis restart
 echo "restart servers"
+
+sleep 10
 
 for d in 60; do
     for size in 20 200 2000; do
