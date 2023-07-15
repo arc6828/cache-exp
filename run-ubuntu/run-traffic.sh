@@ -21,16 +21,22 @@ for d in 60; do
         content=$(wget http://localhost:8000/api/cache/none/${size}KB -q -O -)
         echo "warming up finished"
         for t in 1; do
-            for c in 1 2 4 8 16 32 64; do
+            for c in 100 200 300 400; do
                 echo "${d}s / ${size}KB / ${c} users / ${t} threads"
-                wrk -t${t} -c${c} -d${d}s "http://localhost:8000/api/cache/file/${size}KB" > /var/www/cache-exp/performance/traffic/file-${size}KB-${c}users.txt
+                wrk -t${t} -c${c} -d${d}s "http://localhost:8000/api/cache/file/${size}KB" >/var/www/cache-exp/performance/traffic/file-${size}KB-${c}users.txt
                 echo "1. run file successfully"
-                wrk -t${t} -c${c} -d${d}s "http://localhost:8000/api/cache/mysql/${size}KB" > /var/www/cache-exp/performance/traffic/mysql-${size}KB-${c}users.txt
+
+                sleep 10
+                wrk -t${t} -c${c} -d${d}s "http://localhost:8000/api/cache/mysql/${size}KB" >/var/www/cache-exp/performance/traffic/mysql-${size}KB-${c}users.txt
                 echo "2. run mysql successfully"
-                wrk -t${t} -c${c} -d${d}s "http://localhost:8000/api/cache/redis/${size}KB" > /var/www/cache-exp/performance/traffic/redis-${size}KB-${c}users.txt
+
+                sleep 10
+                wrk -t${t} -c${c} -d${d}s "http://localhost:8000/api/cache/redis/${size}KB" >/var/www/cache-exp/performance/traffic/redis-${size}KB-${c}users.txt
                 echo "3. run redis successfully"
-                wrk -t${t} -c${c} -d${d}s "http://localhost:8000/api/cache/none/${size}KB" > /var/www/cache-exp/performance/traffic/nocache-${size}KB-${c}users.txt
-                echo "4. run nocache successfully"
+
+                sleep 10
+                # wrk -t${t} -c${c} -d${d}s "http://localhost:8000/api/cache/none/${size}KB" > /var/www/cache-exp/performance/traffic/nocache-${size}KB-${c}users.txt
+                # echo "4. run nocache successfully"
             done
         done
     done
