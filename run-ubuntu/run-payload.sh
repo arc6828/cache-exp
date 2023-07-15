@@ -32,7 +32,7 @@ for d in 60; do
         echo "3. run redis successfully"
         wrk -t1 -c1 -d${d}s "http://localhost:8000/api/cache/none/${size}KB" > /var/www/cache-exp/performance/payload/nocache-${d}s-${size}KB.txt
         echo "4. run nocache successfully"
-        wrk -t1 -c1 -d${d}s "http://localhost:8000/api/cache/none/${size}KB" > /var/www/cache-exp/performance/payload/json-${d}s-${size}KB.txt
+        wrk -t1 -c1 -d${d}s "http://localhost:8000/api/cache/json/${size}KB" > /var/www/cache-exp/performance/payload/json-${d}s-${size}KB.txt
         echo "5. run JSON successfully"
     done
 done
