@@ -1,9 +1,0 @@
-Running 1m test @ http://localhost:8000/api/cache/none/2000KB
-  1 threads and 32 connections
-  Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.46s    22.42ms   1.49s    60.00%
-    Req/Sec    13.03      9.25    40.00     77.71%
-  589 requests in 1.00m, 1.10GB read
-  Socket errors: connect 0, read 0, write 0, timeout 584
-Requests/sec:      9.80
-Transfer/sec:     18.70MB
