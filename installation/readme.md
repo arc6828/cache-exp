@@ -29,6 +29,11 @@ mysql -e "CREATE USER cacheuser@localhost IDENTIFIED BY '123456789';"
 mysql -e "GRANT ALL PRIVILEGES ON cacheDB.* TO 'cacheuser'@'localhost';"
 mysql -e "FLUSH PRIVILEGES;"
 
+# or
+mysql -e "CREATE USER cacheuser@'%' IDENTIFIED BY '123456789';"
+mysql -e "GRANT ALL PRIVILEGES ON cacheDB.* TO 'cacheuser'@'%';"
+mysql -e "FLUSH PRIVILEGES;"
+
 # PHP Extension
 php --version
 sudo apt install -y php8.2-fpm php8.2-mysql php-mbstring php-xml php-bcmath

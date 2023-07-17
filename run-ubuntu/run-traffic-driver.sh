@@ -34,7 +34,7 @@ for d in 60; do
         echo "warming up finished"
         for t in 1; do
             # for c in 100 200 300 400; do
-            for c in 1; do
+            for c in 100 200 300; do
                 echo "${d}s / ${size}KB / ${c} users / ${t} threads"
                 wrk -t${t} -c${c} -d${d}s "http://localhost:8000/api/cache/${cache}/${size}KB" >/var/www/cache-exp/performance/traffic/${cache}-${size}KB-${c}users.txt
                 echo "1. run file successfully"

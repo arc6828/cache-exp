@@ -14,11 +14,20 @@ sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=compose
 # redis
 sudo apt install -y redis-server
 
+# nano /etc/redis/redis.conf
+# bind 0.0.0.0
+# protected_mode no
+# Check ufw status ufw status if Status: active then allow redis-port ufw allow 6379
+
 # Database
 mysql -e "CREATE DATABASE cacheDB;"
 mysql -e "CREATE USER cacheuser@localhost IDENTIFIED BY '123456789';"
 mysql -e "GRANT ALL PRIVILEGES ON cacheDB.* TO 'cacheuser'@'localhost';"
 mysql -e "FLUSH PRIVILEGES;"
+
+# mysql -e "CREATE USER cacheuser@'%' IDENTIFIED BY '123456789';"
+# mysql -e "GRANT ALL PRIVILEGES ON cacheDB.* TO 'cacheuser'@'%';"
+# mysql -e "FLUSH PRIVILEGES;"
 
 # PHP Extension
 php --version
