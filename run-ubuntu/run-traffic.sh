@@ -13,7 +13,8 @@ echo "restart servers"
 sleep 10
 
 for d in 60; do
-    for size in 20 200 2000; do
+    # for size in 20 200 2000; do
+    for size in 20; do
         echo "warming up : ${size}KB"
         content=$(wget http://localhost:8000/api/cache/file/${size}KB -q -O -)
         content=$(wget http://localhost:8000/api/cache/mysql/${size}KB -q -O -)
@@ -21,7 +22,7 @@ for d in 60; do
         content=$(wget http://localhost:8000/api/cache/none/${size}KB -q -O -)
         echo "warming up finished"
         for t in 1; do
-            for c in 100 200 300 400; do
+            for c in 100 200 300; do
                 echo "${d}s / ${size}KB / ${c} users / ${t} threads"
                 wrk -t${t} -c${c} -d${d}s "http://localhost:8000/api/cache/file/${size}KB" >/var/www/cache-exp/performance/traffic/file-${size}KB-${c}users.txt
                 echo "1. run file successfully"
