@@ -13,7 +13,7 @@
 
 # sleep 10
 # measure state
-for d in 100; do
+for d in 1000; do
     for size in 200; do
         echo "size : ${size} / amount : ${d}"
         curl "http://localhost:8000/api/cache/test/file/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/file-${size}.txt
