@@ -1,1 +1,7 @@
-{"driver":"redis","size":"2000KB","url":"https:\/\/raw.githubusercontent.com\/arc6828\/cache-exp\/main\/public\/payload\/dataset-2000KB.json?id=1000","duration_seconds":8.025387048721313,"samples":"1000"}
+{
+    "driver": "redis",
+    "size": "2000KB",
+    "url": "https://raw.githubusercontent.com/arc6828/cache-exp/main/public/payload/dataset-2000KB.json?id=1000",
+    "duration_seconds": 8.025387048721313,
+    "samples": "1000"
+}

@@ -1,1 +1,7 @@
-{"driver":"database","size":"2KB","url":"https:\/\/raw.githubusercontent.com\/arc6828\/cache-exp\/main\/public\/payload\/dataset-2KB.json?id=1000","duration_seconds":1.241806983947754,"samples":"1000"}
+{
+    "driver": "database",
+    "size": "2KB",
+    "url": "https://raw.githubusercontent.com/arc6828/cache-exp/main/public/payload/dataset-2KB.json?id=1000",
+    "duration_seconds": 1.241806983947754,
+    "samples": "1000"
+}
