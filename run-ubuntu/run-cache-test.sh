@@ -18,9 +18,9 @@ for d in 1000; do
         echo "size : ${size} / amount : ${d}"
         curl "http://localhost:8000/api/cache/test/file/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/file-${size}KB.json
         echo "1. run file successfully"
-        curl "http://localhost:8000/api/cache/test/database/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/mysql-${size}.json
+        curl "http://localhost:8000/api/cache/test/database/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/mysql-${size}KB.json
         echo "2. run mysql successfully"
-        curl "http://localhost:8000/api/cache/test/redis/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/redis-${size}.json
+        curl "http://localhost:8000/api/cache/test/redis/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/redis-${size}KB.json
         echo "3. run redis successfully"
     done
 done
