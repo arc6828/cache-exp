@@ -16,11 +16,11 @@
 for d in 100; do
     for size in 200; do
         echo "cache size : / ${cache_size}"
-        curl "http://localhost:8000/api/cache/file/${size}KB/${cache_size}/${d}" >/var/www/cache-exp/performance/cache-latency/file-${cache_size}.txt
+        curl "http://localhost:8000/api/cache/file/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/file-${cache_size}.txt
         echo "1. run file successfully"
-        curl "http://localhost:8000/api/cache/database/${size}KB/${cache_size}/${d}" >/var/www/cache-exp/performance/cache-latency/mysql-${cache_size}.txt
+        curl "http://localhost:8000/api/cache/database/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/mysql-${cache_size}.txt
         echo "2. run mysql successfully"
-        curl "http://localhost:8000/api/cache/redis/${size}KB/${cache_size}/${d}" >/var/www/cache-exp/performance/cache-latency/redis-${cache_size}.txt
+        curl "http://localhost:8000/api/cache/redis/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/redis-${cache_size}.txt
         echo "3. run redis successfully"
     done
 done
