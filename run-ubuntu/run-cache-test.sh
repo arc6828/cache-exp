@@ -15,12 +15,12 @@
 # measure state
 for d in 100; do
     for size in 200; do
-        echo "cache size : / ${cache_size}"
-        curl "http://localhost:8000/api/cache/test/file/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/file-${cache_size}.txt
+        echo "size : ${size} / amount : ${d}"
+        curl "http://localhost:8000/api/cache/test/file/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/file-${size}.txt
         echo "1. run file successfully"
-        curl "http://localhost:8000/api/cache/test/database/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/mysql-${cache_size}.txt
+        curl "http://localhost:8000/api/cache/test/database/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/mysql-${size}.txt
         echo "2. run mysql successfully"
-        curl "http://localhost:8000/api/cache/test/redis/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/redis-${cache_size}.txt
+        curl "http://localhost:8000/api/cache/test/redis/${size}KB/${d}" >/var/www/cache-exp/performance/cache-latency/redis-${size}.txt
         echo "3. run redis successfully"
     done
 done
