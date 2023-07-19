@@ -4,10 +4,11 @@ use App\Http\Controllers\API\CacheController;
 use App\Http\Controllers\API\CacheFlushController;
 use App\Models\Medium;
 use App\Models\Payload;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
-
+// Cache::store('redis')->rememberForever('users', fn () => User::factory()->count(100)->make());
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,4 +31,5 @@ Route::prefix('cache')->group(function () {
     Route::get('mysql/{size}/{id?}', [CacheController::class, "mysql"]);
     Route::get('redis/{size}/{id?}', [CacheController::class, "redis"]);
     Route::get('json/{size}/{id?}', [CacheController::class, "json"]);
+    Route::get('test/{driver}/{size}/{id?}', [CacheController::class, "test"]);
 });
